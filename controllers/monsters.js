@@ -83,7 +83,6 @@ const updateMonster = async (req, res) => {
     .db()
     .collection('monsters')
     .replaceOne({ _id: monsterId }, monster);
-  console.log(response);
   if (response.modifiedCount > 0) {
     res.status(204).send();
   } else {
@@ -98,7 +97,6 @@ const deleteMonster = async (req, res) => {
   }
   const monsterId = new ObjectId(req.params.id);
   const response = await mongodb.getDb().db().collection('monsters').remove({ _id: monsterId }, true);
-  console.log(response);
   if (response.deletedCount > 0) {
     res.status(204).send();
   } else {
