@@ -5,7 +5,7 @@ const doc = {
     title: 'My API',
     description: 'DnD API'
   },
-  host: 'localhost:8083',
+  host: 'project2-3j8l.onrender.com',
   schemes: ['http','https']
 };
 
