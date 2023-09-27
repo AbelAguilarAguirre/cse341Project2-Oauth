@@ -69,7 +69,6 @@ const updatePlayer = async (req, res) => {
     .db()
     .collection('players')
     .replaceOne({ _id: playerId }, player);
-  console.log(response);
   if (response.modifiedCount > 0) {
     res.status(204).send();
   } else {
@@ -84,7 +83,6 @@ const deletePlayer = async (req, res) => {
   }
   const playerId = new ObjectId(req.params.id);
   const response = await mongodb.getDb().db().collection('players').remove({ _id: playerId }, true);
-  console.log(response);
   if (response.deletedCount > 0) {
     res.status(204).send();
   } else {
