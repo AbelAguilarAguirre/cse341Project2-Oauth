@@ -45,7 +45,44 @@ const savePlayer = (req, res, next) => {
   });
 };
 
+const saveNpc = (req, res, next) => {
+  const validationRule = {
+    name: 'required|string',
+    job: 'required|string'
+  };
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
+const saveDice = (req, res, next) => {
+  const validationRule = {
+    sides: 'required|integer'
+  };
+  validator(req.body, validationRule, {}, (err, status) => {
+    if (!status) {
+      res.status(412).send({
+        success: false,
+        message: 'Validation failed',
+        data: err
+      });
+    } else {
+      next();
+    }
+  });
+};
+
 module.exports = {
   saveMonster,
-  savePlayer
+  savePlayer,
+  saveNpc,
+  saveDice
 };

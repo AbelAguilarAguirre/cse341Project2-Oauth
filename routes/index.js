@@ -5,6 +5,8 @@ const router = express.Router();
 router.use('/', require('./swagger'));
 router.use('/monsters', require('./monsters'));
 router.use('/players', require('./players'));
+router.use('/npcs', require('./npcs'));
+router.use('/die', require('./die'));
 router.get('/login', passport.authenticate('github'), (req, res) => {});
 
 router.get('/logout', function(req, res, next) {
