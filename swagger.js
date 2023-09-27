@@ -6,7 +6,7 @@ const doc = {
     description: 'DnD API'
   },
   host: 'project2-part2.onrender.com',
-  schemes: ['http','https']
+  schemes: ['https']
 };
 
 const outputFile = './swagger.json';
