@@ -9,11 +9,12 @@ const getAll = (req, res) => {
     .collection('npcs')
     .find()
     .toArray((err, lists) => {
-      if (err) {
-        res.status(400).json({ message: err });
+      try {
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(lists);
+      } catch (err) {
+        res.status(500).json({ message: err });
       }
-      res.setHeader('Content-Type', 'application/json');
-      res.status(200).json(lists);
     });
 };
 
@@ -29,11 +30,12 @@ const getSingle = (req, res) => {
     .collection('npcs')
     .find({ _id: npcId })
     .toArray((err, result) => {
-      if (err) {
+      try {
+        res.setHeader('Content-Type', 'application/json');
+        res.status(200).json(lists[0]);
+      } catch (err) {
         res.status(400).json({ message: err });
       }
-      res.setHeader('Content-Type', 'application/json');
-      res.status(200).json(result[0]);
     });
 };
 

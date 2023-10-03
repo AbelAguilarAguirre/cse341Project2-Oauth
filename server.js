@@ -58,10 +58,10 @@ app.get('/github/callback', passport.authenticate('github', {
   });
 
 mongodb.initDb((err) => {
-  if (err) {
-    console.log(err);
-  } else {
+  try {
     app.listen(port);
     console.log(`Connected to DB and listening on ${port}`);
+  } catch (err) {
+    console.log(err);
   }
 });
