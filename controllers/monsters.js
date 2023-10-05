@@ -30,12 +30,11 @@ const getSingle = (req, res) => {
     .collection('monsters')
     .find({ _id: monsterId })
     .toArray((err, result) => {
-      try {
-        res.setHeader('Content-Type', 'application/json');
-        res.status(200).json(lists[0]);
-      } catch (err) {
+      if (err) {
         res.status(400).json({ message: err });
       }
+      res.setHeader('Content-Type', 'application/json');
+      res.status(200).json(result[0]);
     });
 };
 
